@@ -1,0 +1,2 @@
+GPIO Commit (GPIOCR), offset 0x524
+0x4005.D000 GPIO Port F

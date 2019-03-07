@@ -1,0 +1,3 @@
+Dependencies for Project 'Lab3', Target 'Lab3': (DO NOT MODIFY !)
+F (.\startup.s)(0x5AE0C69B)(--cpu Cortex-M4.fp --pd "__EVAL SETA 1" -g --apcs=interwork -I "E:\Program Files (x86)\Keil\ARM\RV31\INC"-I "E:\Program Files (x86)\Keil\ARM\CMSIS\Include"-I "E:\Program Files (x86)\Keil\ARM\Inc\TI\TM4C123"--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
+F (.\Lab3.s)(0x5AE5F68E)(--cpu Cortex-M4.fp --pd "__EVAL SETA 1" -g --apcs=interwork -I "E:\Program Files (x86)\Keil\ARM\RV31\INC"-I "E:\Program Files (x86)\Keil\ARM\CMSIS\Include"-I "E:\Program Files (x86)\Keil\ARM\Inc\TI\TM4C123"--list .\lab3.lst --xref -o .\lab3.o --depend .\lab3.d)

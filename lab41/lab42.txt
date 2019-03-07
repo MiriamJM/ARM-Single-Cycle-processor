@@ -1,0 +1,56 @@
+#include <stdint.h>
+#define RCGCGPIO (*((unsigned int *)0x400FE608U))
+#define GPIOF_BASE 0x40025000U
+#define GPIOF_DEN (*((unsigned int *)(GPIOF_BASE + 0x51CU)))
+#define GPIOF_DATA (*((unsigned int *)(GPIOF_BASE + 0x3FCU)))
+#define GPIOF_DIR (*((unsigned int *) (GPIOF_BASE + 0x400U)))
+
+int main()
+{
+  RCGCGPIO = 0x20U; // enable port F GPIO
+  GPIOF_DIR = 0x0EU; // set pins 1,2,3  as outputs
+  GPIOF_DEN = 0x0EU; // clear all port F
+  
+  while (1) 
+  {
+    GPIOF_DATA = 0x02U; // turn on red LED
+      
+    int counter = 0;
+    while (counter < 1000000) {
+      ++counter;
+    }
+    
+    GPIOF_DATA = 0x00U;
+    counter = 0;
+    while(counter < 1000000) {
+      ++counter;
+    }
+    
+     GPIOF_DATA = 0x04U; // turn on blue LED
+      
+    counter = 0;
+    while (counter < 1000000) {
+      ++counter;
+    }
+    
+    GPIOF_DATA = 0x00U;
+    counter = 0;
+    while(counter < 1000000) {
+      ++counter;
+    }
+    
+     GPIOF_DATA = 0x08U; // turn on green LED
+      
+    counter = 0;
+    while (counter < 1000000) {
+      ++counter;
+    }
+    
+    GPIOF_DATA = 0x00U;
+    counter = 0;
+    while(counter < 1000000) {
+      ++counter;
+    }
+  }
+  return 0;
+}

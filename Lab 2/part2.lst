@@ -1,0 +1,70 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             |.text|,CODE,READONLY,ALIGN=2
+    2 00000000                 THUMB
+    3 00000000                 EXPORT           Start
+    4 00000000         Start
+    5 00000000 F04F 0005       MOV              r0,#5       ; Set r0=3
+    6 00000004 B501    LOOP    PUSH             {r0,LR}     ;
+    7 00000006 2801            CMP              R0,#1       ;check r0 = 1; 5 = 
+                                                            1 false
+    8 00000008 DC03            BGT              ELSE        ;Greater than
+    9 0000000A F04F 0001       MOV              R0,#1
+   10 0000000E B002            ADD              SP,SP,#8    ; sp + 8 = sp
+   11 00000010 46F7            MOV              PC,LR
+   12 00000012 F1A0 0001 
+                       ELSE    SUB              R0,R0,#1    ; ro = r0 - 1; fals
+                                                            e so r0=5-1
+   13 00000016 F7FF FFF5       BL               LOOP        ; branch with link
+   14 0000001A E8BD 4002       POP              {r1,LR}
+   15 0000001E FB01 F000       MUL              R0,R1,R0    ; r1 * r0 = r0
+   16 00000022 46F7            MOV              PC, LR
+   17 00000024                 END
+Command Line: --debug --xref --cpu=Cortex-M4.fp --apcs=interwork --depend=.\par
+t2.d -o.\part2.o -I"E:\Program Files (x86)\Keil\ARM\RV31\INC" -I"E:\Program Fil
+es (x86)\Keil\ARM\CMSIS\Include" -I"E:\Program Files (x86)\Keil\ARM\Inc\TI\TM4C
+123" --predefine="__EVAL SETA 1" --list=.\part2.lst part2.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 1 in file part2.s
+   Uses
+      None
+Comment: .text unused
+ELSE 00000012
+
+Symbol: ELSE
+   Definitions
+      At line 12 in file part2.s
+   Uses
+      At line 8 in file part2.s
+Comment: ELSE used once
+LOOP 00000004
+
+Symbol: LOOP
+   Definitions
+      At line 6 in file part2.s
+   Uses
+      At line 13 in file part2.s
+Comment: LOOP used once
+Start 00000000
+
+Symbol: Start
+   Definitions
+      At line 4 in file part2.s
+   Uses
+      At line 3 in file part2.s
+Comment: Start used once
+4 symbols
+336 symbols in table

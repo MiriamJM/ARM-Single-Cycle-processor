@@ -1,0 +1,64 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             |.text|, CODE, READONLY, ALIGN=
+2
+    2 00000000                 THUMB
+    3 00000000                 EXPORT           Start
+    4 00000000         Start
+    5 00000000         
+    6 00000000 F04F 0004       MOV              r0, #4      ; load 4 into r0
+    7 00000004 F04F 0105       MOV              r1, #5      ; load 5 into r1
+    8 00000008 F04F 0309       MOV              r3, #9      ; load 3 into r3
+    9 0000000C EB00 0201       ADD              r2, r0,r1   ; add ro to r1 and 
+                                                            put the result in r
+                                                            2
+   10 00000010 EB02 0403       ADD              r4, r2,r3   ; subtract r2 to r3
+                                                             and put the result
+                                                             in r4
+   11 00000014 F1A4 0603       SUB              r6, r4,#3
+   12 00000018 F04F 5500       MOV              r5, #0x20000000 ;base
+   13 0000001C F8C5 60A0       STR              r6, [r5,#0xA0]
+   14 00000020 E7FE    T       B                T           ; force infinite lo
+                                                            op by branching to 
+                                                            this line
+   15 00000022                 END                          ; end of program
+Command Line: --debug --xref --cpu=Cortex-M4.fp --apcs=interwork --depend=.\lab
+3.d -o.\lab3.o -I"E:\Program Files (x86)\Keil\ARM\RV31\INC" -I"E:\Program Files
+ (x86)\Keil\ARM\CMSIS\Include" -I"E:\Program Files (x86)\Keil\ARM\Inc\TI\TM4C12
+3" --predefine="__EVAL SETA 1" --list=.\lab3.lst Lab3.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 1 in file Lab3.s
+   Uses
+      None
+Comment: .text unused
+Start 00000000
+
+Symbol: Start
+   Definitions
+      At line 4 in file Lab3.s
+   Uses
+      At line 3 in file Lab3.s
+Comment: Start used once
+T 00000020
+
+Symbol: T
+   Definitions
+      At line 14 in file Lab3.s
+   Uses
+      At line 14 in file Lab3.s
+Comment: T used once
+3 symbols
+335 symbols in table

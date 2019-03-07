@@ -1,0 +1,84 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             |.text|,CODE,READONLY,ALIGN=2
+    2 00000000                 THUMB
+    3 00000000                 EXPORT           Start
+    4 00000000         Start
+    5 00000000         ; R0 = number
+    6 00000000         ; R1 = mask
+    7 00000000         ; R2 = counter of ones (Output of the program)
+    8 00000000         ; R3 = loop counter
+    9 00000000         ; R4 = AND result
+   10 00000000         
+   11 00000000         ; Initialize registers.
+   12 00000000 F04F 30FF       MOV              r0, #-1
+   13 00000004 F04F 0101       MOV              r1, #1
+   14 00000008 F04F 0200       MOV              r2, #0
+   15 0000000C F04F 0300       MOV              r3, #0
+   16 00000010         
+   17 00000010 EA00 0401 
+                       LOOP    AND              r4, r0, r1  ; r4 = r0 AND r1
+   18 00000014 2C00            CMP              r4, #0      ; if r4 == 0...
+   19 00000016 D001            BEQ              INC         ; ...then jump to I
+                                                            NC, otherwise conti
+                                                            nue to r2++
+   20 00000018 F102 0201       ADD              r2, r2, #1  ; r2++
+   21 0000001C         
+   22 0000001C F103 0301 
+                       INC     ADD              r3, r3, #1
+   23 00000020 EA4F 0141       LSL              r1, r1, #1  ; r1 = r1 << 1
+   24 00000024 2B20            CMP              r3, #32     ; 32 bits = sizeof(
+                                                            int) * 8 bits per b
+                                                            yte
+   25 00000026 DBF3            BLT              LOOP        ; if( r3 < 32 ) got
+                                                            o LOOP; otherwise e
+                                                            nd program.
+   26 00000028                 END
+Command Line: --debug --xref --cpu=Cortex-M4.fp --apcs=interwork --depend=.\par
+t3.d -o.\part3.o -I"E:\Program Files (x86)\Keil\ARM\RV31\INC" -I"E:\Program Fil
+es (x86)\Keil\ARM\CMSIS\Include" -I"E:\Program Files (x86)\Keil\ARM\Inc\TI\TM4C
+123" --predefine="__EVAL SETA 1" --list=.\part3.lst part3.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 1 in file part3.s
+   Uses
+      None
+Comment: .text unused
+INC 0000001C
+
+Symbol: INC
+   Definitions
+      At line 22 in file part3.s
+   Uses
+      At line 19 in file part3.s
+Comment: INC used once
+LOOP 00000010
+
+Symbol: LOOP
+   Definitions
+      At line 17 in file part3.s
+   Uses
+      At line 25 in file part3.s
+Comment: LOOP used once
+Start 00000000
+
+Symbol: Start
+   Definitions
+      At line 4 in file part3.s
+   Uses
+      At line 3 in file part3.s
+Comment: Start used once
+4 symbols
+336 symbols in table
